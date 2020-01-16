@@ -1,5 +1,6 @@
 ARG BASEIMAGE=oracle/graalvm-ce:19.3.0
 
+# ------------------------------STEP1----------------------------------------------------
 # Use official node for build
 FROM node:10 AS NPM
 # Create app directory
@@ -13,6 +14,7 @@ COPY package*.json ./
 # npm is run with unsafe permissions because the default docker user is root
 RUN npm --unsafe-perm update
 
+# ------------------------------STEP2----------------------------------------------------
 # Second stage (build the JVM related code)
 FROM $BASEIMAGE AS JVM
 ARG ES4X_VERSION=0.10.0
@@ -27,6 +29,7 @@ RUN curl -sL https://github.com/reactiverse/es4x/releases/download/${ES4X_VERSIO
 # Install the Java Dependencies
 RUN es4x install -f
 
+# ------------------------------STEP3----------------------------------------------------
 # Third stage (contain)
 FROM $BASEIMAGE
 # Collect the jars from the previous step
@@ -35,7 +38,10 @@ COPY --from=JVM /usr/src/app /usr/src/app
 WORKDIR /usr/src/app
 # Bundle app source
 COPY . .
+# Build step
+RUN npm run prestart
 
+# ------------------------------STEP4----------------------------------------------------
 EXPOSE 8080
 # Define custom java options for containers
 ENV JAVA_OPTS="-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:+UseContainerSupport"
