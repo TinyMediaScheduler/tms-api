@@ -1,17 +1,7 @@
 {
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "git.confirmSync": false,
-  "editor.formatOnSave": true,
-  "editor.detectIndentation": false,
-  "diffEditor.ignoreTrimWhitespace": false,
-  "markdown.extension.toc.githubCompatibility": true,
-  "prettier.configPath": ".prettierrc"
+  "azureFunctions.deploySubpath": ".",
+  "azureFunctions.projectLanguage": "TypeScript",
+  "azureFunctions.projectRuntime": "~3",
+  "debug.internalConsoleOptions": "neverOpen",
+  "azureFunctions.preDeployTask": "npm prune"
 }

@@ -1,31 +1,17 @@
 {
-  "name": "tms-api",
-  "version": "0.1.0",
-  "description": "Backend API for Tiny Media Scheduler.",
-  "private": true,
-  "main": "dist/src/index.js",
+  "name": "az-functions",
+  "version": "1.0.0",
+  "description": "",
   "scripts": {
-    "prestart": "tsc",
-    "start": "es4x-launcher",
-    "pretest": "tsc",
-    "test": "es4x test dist/tests/index.test.js",
-    "postinstall": "es4x install",
-    "dockerfile": "es4x dockerfile"
+    "build": "tsc",
+    "watch": "tsc -w",
+    "prestart": "npm run build",
+    "start": "func start",
+    "test": "echo \"No tests yet...\""
   },
-  "keywords": [
-    "Tiny Media Scheduler",
-    "TheTVDb",
-    "TV Schedule"
-  ],
-  "author": "Akash",
-  "license": "MIT",
+  "dependencies": {},
   "devDependencies": {
-    "@vertx/unit": "^3.8.4",
-    "es4x-pm": "^0.10.0",
-    "typescript": "^3.7.4"
-  },
-  "dependencies": {
-    "@vertx/core": "^3.8.4"
-  },
-  "mvnDependencies": []
+    "@azure/functions": "^1.0.2-beta2",
+    "typescript": "^3.3.3"
+  }
 }

@@ -1,9 +1,0 @@
-      if (a.firstAired && b.firstAired) {
-        if (a.firstAired < b.firstAired) {
-          compare = -1;
-        } else if (a.firstAired > b.firstAired) {
-          compare = 1;
-        } else {
-          compare = 0;
-        }
-        compare = compare || 0;
